@@ -45,8 +45,13 @@ void main() {
       expect(() => createModel(description: value), throwsArgumentError);
     });
   }
-  for (final scale in [0.0, -1.0, double.nan, double.infinity,
-    double.negativeInfinity]) {
+  for (final scale in [
+    0.0,
+    -1.0,
+    double.nan,
+    double.infinity,
+    double.negativeInfinity,
+  ]) {
     test('Отклоняется scale $scale', () {
       expect(() => createModel(scale: scale), throwsArgumentError);
     });
@@ -55,10 +60,15 @@ void main() {
     expect(createModel(scale: 0.01).scale, 0.01);
   });
   for (final path in [
-    '', 'assets/models/a.obj', '/assets/models/a.glb',
-    'assets/models/../a.glb', 'assets/models/./a.glb',
-    'assets/models//a.glb', r'assets\models\a.glb',
-    'other/models/a.glb', 'assets/previews/a.glb',
+    '',
+    'assets/models/a.obj',
+    '/assets/models/a.glb',
+    'assets/models/../a.glb',
+    'assets/models/./a.glb',
+    'assets/models//a.glb',
+    r'assets\models\a.glb',
+    'other/models/a.glb',
+    'assets/previews/a.glb',
     'assets/models/a.glb?x=1',
   ]) {
     test('Отклоняется путь модели "$path"', () {
@@ -66,8 +76,12 @@ void main() {
     });
   }
   test('Отклоняются неподходящие пути превью', () {
-    for (final path in ['', 'assets/previews/a.glb',
-      'assets/models/a.png', 'assets/previews/../a.png']) {
+    for (final path in [
+      '',
+      'assets/previews/a.glb',
+      'assets/models/a.png',
+      'assets/previews/../a.png',
+    ]) {
       expect(() => createModel(previewPath: path), throwsArgumentError);
     }
   });

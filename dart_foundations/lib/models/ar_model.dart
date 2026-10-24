@@ -20,9 +20,12 @@ class ArModel {
   }) : title = _normalizeText(title, 'title'),
        description = _normalizeText(description, 'description'),
        modelPath = _validatePath(modelPath, 'models', {'glb'}, 'modelPath'),
-       previewPath = _validatePath(
-         previewPath, 'previews', {'png', 'jpg', 'jpeg', 'webp'}, 'previewPath',
-       ) {
+       previewPath = _validatePath(previewPath, 'previews', {
+         'png',
+         'jpg',
+         'jpeg',
+         'webp',
+       }, 'previewPath') {
     if (id < minId || id > maxId) {
       throw ArgumentError.value(id, 'id', 'Допустим диапазон $minId..$maxId');
     }
@@ -50,17 +53,22 @@ class ArModel {
   ) {
     final path = _normalizeText(value, name);
     final parts = path.split('/');
-    final valid = parts.length >= 3 &&
+    final valid =
+        parts.length >= 3 &&
         parts[0] == 'assets' &&
         parts[1] == directory &&
-        parts.every((part) =>
-            part != '.' &&
-            part != '..' &&
-            RegExp(r'^[a-zA-Z0-9_.-]+$').hasMatch(part)) &&
+        parts.every(
+          (part) =>
+              part != '.' &&
+              part != '..' &&
+              RegExp(r'^[a-zA-Z0-9_.-]+$').hasMatch(part),
+        ) &&
         extensions.any((extension) => parts.last.endsWith('.$extension'));
     if (!valid) {
       throw ArgumentError.value(
-        value, name, 'Ожидается путь assets/$directory с допустимым расширением',
+        value,
+        name,
+        'Ожидается путь assets/$directory с допустимым расширением',
       );
     }
     return path;
