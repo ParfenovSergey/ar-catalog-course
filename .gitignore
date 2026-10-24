@@ -1,0 +1,94 @@
+# Один репозиторий: dart_foundations/ и ar_catalog/.
+# Дополняет .gitignore, создаваемые генераторами Dart и Flutter.
+
+# Dart и Flutter: кеши и результаты сборки.
+.dart_tool/
+.pub/
+.pub-cache/
+.packages
+.flutter-plugins
+.flutter-plugins-dependencies
+build/
+coverage/
+*.lcov
+
+# Локальные настройки Android и кеши Gradle/Kotlin.
+.gradle/
+.kotlin/
+.cxx/
+.externalNativeBuild/
+local.properties
+key.properties
+/android/captures/
+/ar_catalog/android/captures/
+/ar_catalog/android/app/debug/
+/ar_catalog/android/app/profile/
+/ar_catalog/android/app/release/
+
+# Выходные артефакты вне стандартной папки build.
+*.apk
+*.aab
+*.apks
+*.symbols
+*.map.json
+
+# Подпись приложения и закрытые ключи.
+*.jks
+*.keystore
+*.p12
+*.pfx
+*.key
+*.pem
+
+# Секреты и локальная конфигурация.
+.env
+.env.*
+!.env.example
+!.env.sample
+
+# Локальные файлы SQLite в корнях учебных проектов.
+# Рабочая БД Android находится в приватном каталоге приложения.
+# Намеренно не исключаем *.db во всех папках: тестовые fixtures могут быть нужны.
+/dart_foundations/*.db
+/dart_foundations/*.db-*
+/dart_foundations/*.sqlite
+/dart_foundations/*.sqlite-*
+/dart_foundations/*.sqlite3
+/dart_foundations/*.sqlite3-*
+/ar_catalog/*.db
+/ar_catalog/*.db-*
+/ar_catalog/*.sqlite
+/ar_catalog/*.sqlite-*
+/ar_catalog/*.sqlite3
+/ar_catalog/*.sqlite3-*
+
+# Локальные настройки IDE.
+.idea/
+*.iml
+*.ipr
+*.iws
+**/.vscode/*
+!**/.vscode/extensions.json
+!**/.vscode/launch.json
+!**/.vscode/tasks.json
+
+# Временные файлы редакторов и ОС.
+*.log
+*.tmp
+*.temp
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Локальная папка временных экспериментов.
+/tmp/
+
+# Сохраняем в Git:
+# - pubspec.yaml и pubspec.lock обоих проектов;
+# - android/, Gradle Wrapper, .metadata и исходные конфигурации Flutter;
+# - lib/, bin/, test/, integration_test/;
+# - изображения, GLB, лицензии ресурсов;
+# - исходники схемы SQLite, миграций и начального заполнения.
