@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:dart_foundations/data/sample_models.dart';
+import 'package:dart_foundations/services/model_lookup.dart';
 import 'package:dart_foundations/services/qr_parser.dart';
 
 void main() {
@@ -23,8 +24,11 @@ void main() {
       stdout.writeln('Некорректный идентификатор');
       continue;
     }
-    final model = sampleModels[id - 1];
-
+    final model = findModelById(sampleModels, id);
+    if (model == null) {
+      stdout.writeln('Объект не найден');
+      continue;
+    }
     stdout.writeln('Найден объект: ${model.title}');
     stdout.writeln(model.description);
     stdout.writeln('Модель: ${model.modelPath}');
